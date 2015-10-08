@@ -12,6 +12,7 @@
     - ansible_deps
     - php
     - mysql
+    - mysql_import
     - memcached
     - httpd
     - swfmill

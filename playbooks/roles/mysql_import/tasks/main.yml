@@ -1,0 +1,19 @@
+---
+- name: Copy Database data from local
+  copy: src={{item}}.sql dest=./
+  with_items:
+    - world
+  tags: mysql_import
+
+- name: Create new database
+  mysql_db: name={{ item }} state=present
+  with_items:
+    - world
+  tags: mysql_import
+
+- name: Import Database from SQL
+  mysql_db: name={{ item }} state=import target=./{{ item }}.sql
+  with_items:
+    - world
+  tags: mysql_import
+

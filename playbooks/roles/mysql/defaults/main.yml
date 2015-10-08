@@ -1,3 +1,6 @@
 ---
 mysql:
   module_version: 5.1.73-5.el6_6
+  root_password: password
+  new_user_name: testuser
+  new_user_password: testuserpassword

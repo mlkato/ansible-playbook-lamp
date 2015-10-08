@@ -8,3 +8,35 @@
     - mysql-server
     # TODO: 以下が必要か調査
     # - mysqlclient15
+
+- name: Start MySQL
+  service:
+    name: mysqld
+    state: started
+    enabled: yes
+  tags: mysql
+
+- name: Set MySQL root password
+  mysql_user:
+    name: root
+    host: localhost
+    password: "{{ mysql.root_password }}"
+  tags: mysql
+
+- name: Copy my.cnf
+  template:
+    src: my.cnf.j2
+    dest: "~/.my.cnf"
+    mode: 0600
+  tags: mysql
+
+- name: Create new user
+  mysql_user:
+    login_user: root
+    login_password: "{{ mysql.root_password }}"
+    name: "{{ mysql.new_user_name }}"
+    password: "{{ mysql.new_user_password }}"
+    priv: "*.*:ALL"
+    host: localhost
+    state: present
+  tags: mysql
