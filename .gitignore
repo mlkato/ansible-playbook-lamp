@@ -1,1 +1,3 @@
 .vagrant
+*.gz
+*.sql.gz
