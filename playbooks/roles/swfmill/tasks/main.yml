@@ -1,0 +1,39 @@
+---
+- name: Install gcc-c++
+  command: yum -y --enablerepo=remi install gcc-c++-4.4.7-16.el6.{{ common.arch }} autoconf automake
+
+- name: Install libxml2-devel
+  yum: name=libxml2-devel-2.7.6-20.el6.{{ common.arch }}
+
+- name: Install libxslt-devel
+  yum: name=libxslt-devel-1.1.26-2.el6_3.1.{{ common.arch }}
+
+- name: Install freetype-devel
+  yum: name=freetype-devel-2.3.11-15.el6_6.1.{{ common.arch }}
+
+- name: Install libpng-devel
+  yum: name=libpng-devel-2:1.2.49-1.el6_2.{{ common.arch }}
+
+- name: Install zlib-devel
+  yum: name=zlib-devel-1.2.3-29.el6.{{ common.arch }}
+
+- name: Get swfmill from WWW
+  command: wget {{ swfmill.src_url }}-{{ swfmill.version }}.tar.gz
+
+- name: Unzip swfmill source
+  unarchive: src=swfmill-{{ swfmill.version }}.tar.gz dest=./ copy=no
+
+- name: configure swfmill
+  command: ./configure
+  args:
+    chdir: swfmill-{{ swfmill.version }}
+
+- name: make swfmill
+  command: make
+  args:
+    chdir: swfmill-{{ swfmill.version }}
+
+- name: make install swfmill
+  command: make install
+  args:
+    chdir: swfmill-{{ swfmill.version }}

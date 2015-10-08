@@ -1,0 +1,3 @@
+---
+memcached:
+  module_version: 1.4.4-3.el6

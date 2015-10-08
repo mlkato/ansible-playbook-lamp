@@ -1,0 +1,28 @@
+---
+- name: Install PHP modules from default yum repo
+  yum: name={{ item }}-{{ php.module_version }}.{{ common.arch }}
+  with_items:
+    - php
+    - php-bcmath
+    - php-cli
+    - php-common
+    - php-devel
+    - php-gd
+    - php-mbstring
+    - php-mysql
+    - php-pdo
+    - php-process
+    - php-xml
+
+- name: Install php-pear
+  yum: name=php-pear-1:1.9.4-4.el6.noarch
+
+- name: Install php-pecl-igbinary
+  yum: name=php-pecl-igbinary-1.2.1-1.el6.{{ common.arch }}
+
+- name: Install php-pecl-memcache
+  yum: name=php-pecl-memcache-3.0.5-4.el6.{{ common.arch }}
+
+- name: Install php-pecl-memcached
+  yum: name=php-pecl-memcached-1.0.0-1.el6.{{ common.arch }}
+

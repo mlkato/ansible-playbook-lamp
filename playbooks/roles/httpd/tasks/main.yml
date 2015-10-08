@@ -1,0 +1,3 @@
+---
+- name: Install httpd (apache2)
+  yum: name=httpd-{{ httpd.module_version }}.{{ common.arch }}

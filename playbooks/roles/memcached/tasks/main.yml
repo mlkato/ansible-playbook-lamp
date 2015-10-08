@@ -1,0 +1,6 @@
+---
+- name: Install Memcached
+  yum: name=memcached-{{ memcached.module_version }}.{{ common.arch }}
+
+- name: Install libmemcached
+  yum: name=libmemcached-0.31-1.1.el6.{{ common.arch }}

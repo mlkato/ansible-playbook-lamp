@@ -1,0 +1,10 @@
+---
+- name: Install MySQL module
+  yum: name={{ item }}-{{ mysql.module_version }}.{{ common.arch }}
+  with_items:
+    - mysql
+    - mysql-devel
+    - mysql-libs
+    - mysql-server
+    # TODO: 以下が必要か調査
+    # - mysqlclient15

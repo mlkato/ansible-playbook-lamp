@@ -1,0 +1,5 @@
+---
+- name: Check update yum repo
+  command: yum check-update
+- name: Update yum repo
+  command: yum -y update

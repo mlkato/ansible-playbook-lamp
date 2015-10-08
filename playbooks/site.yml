@@ -1,0 +1,17 @@
+- hosts: all
+  sudo: yes
+  remote_user: root
+  gather_facts: no
+  vars:
+    global:
+      arch: x86_64
+  roles:
+    - common
+    - remi
+    - yum_update
+    - ansible_deps
+    - php
+    - mysql
+    - memcached
+    - httpd
+    - swfmill
