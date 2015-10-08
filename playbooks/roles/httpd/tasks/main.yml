@@ -1,3 +1,11 @@
 ---
 - name: Install httpd (apache2)
   yum: name=httpd-{{ httpd.module_version }}.{{ common.arch }}
+  tags: httpd
+
+- name: Start httpd
+  service:
+    name: httpd
+    state: started
+    enabled: yes
+  tags: httpd
